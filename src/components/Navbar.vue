@@ -21,6 +21,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 15px;
+  margin-bottom: 30px;
 }
 .navbar__btns {
   margin-left: auto;

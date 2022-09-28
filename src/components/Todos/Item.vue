@@ -1,29 +1,40 @@
 <template>
-  <div class="todo-item">
+  <div 
+    class="todo-item"
+    @click="() => toggleTodo(this.todoId)" 
+  >
     <div><strong>Задача:</strong> {{ data.name }}</div>
     <input 
       type="checkbox" 
-      @click="setTodoChecked" 
       :checked="data.done" 
     />
   </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapMutations } from 'vuex'
   export default {
+    data() {
+      return {
+        isChecked: this.data.done
+      }
+    },
     props: {
       data: {
         type: Object,
         required: true
       }
     },
+    computed: {
+      todoId: '123'
+    },
     methods: {
-      ...mapActions({
-        setUsers: 'userModule/setUsers'
-      }),
-      setTodoChecked(e) {
-      }
+      ...mapMutations({
+        toggleTodo: 'todosModule/toggleTodo'
+      })
+    },
+    mounted() {
+      console.log(this.todoId)
     }
   }
 </script>
@@ -35,5 +46,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    cursor: pointer;
+    width: 100%;
   }
 </style>

@@ -1,20 +1,20 @@
 <template>
   <div>
     <NavBar />
-    <Users />
+    <UsersPage />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/Navbar.vue';
-import Users from './pages/Users.vue';
+import UsersPage from './pages/UsersPage.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    Users
-}
+    UsersPage
+  }
 }
 </script>
 

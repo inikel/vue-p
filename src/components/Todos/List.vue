@@ -1,12 +1,10 @@
 <template>
-  <div class="list" v-if="todos.length > 0">
-    <transition-group name="user-list">
-      <TodoItem
-        v-for="todo in todos"
-        :data="todo"
-        :key="todo.id"
-      />
-    </transition-group>
+  <div v-if="todos.length > 0">
+    <TodoItem
+      v-for="todo in todos"
+      :data="todo"
+      :key="todo.id"
+    />
   </div>
   <h2 v-else style="color: red">
     Список пользователей пуст
@@ -23,6 +21,10 @@ export default {
       type: Array,
       required: true
     }
+  },
+  mounted() {
+    console.log('mounted this.todos')
+    console.log(this.todos)
   }
 }
 </script>

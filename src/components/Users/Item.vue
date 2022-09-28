@@ -1,11 +1,11 @@
 <template>
   <div class="user-item">
     <div>
-      <div><strong>Пользователь:</strong> {{ data.name }}</div>
+      <div><strong>Пользователь:</strong> {{ userData.name }}</div>
     </div>
     <div class="user-item__btns">
       <MyButton
-        @click="$emit('openTodos', data)"
+        @click="$emit('openTodos', userData)"
       >
         Задачи
       </MyButton>
@@ -16,9 +16,14 @@
 <script>
   export default {
     props: {
-      data: {
+      userData: {
         type: Object,
         required: true
+      },
+    },
+    computed: {
+      userTodos() {
+
       }
     }
   }
