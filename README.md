@@ -1,3 +1,11 @@
+## Hey there! This is my play with vue3 js
+
+# What is it
+
+Task was: 
+Create interface with users list, their todos and payments
+User item in list should have two buttons (which will open 
+corresponding popups): todos and edit info. 
 # vue-p
 
 ## Project setup
@@ -9,16 +17,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
