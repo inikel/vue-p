@@ -2,7 +2,6 @@
 export const usersModule = {
   state: () => ({
     currentUser: {
-      id: null,
       name: null,
       email: null,
       username: null
@@ -37,6 +36,26 @@ export const usersModule = {
   mutations: {
     setUsers(state, users) {
       state.users = users
+    },
+    fillCurrentUser(state, userData) {
+      const { name, email, username } = userData
+
+      console.log('userData in fillCurUser')
+      console.log(userData)
+
+      console.log('state.currentUser')
+      console.log(state.currentUser)
+
+      const obj = {
+        name,
+        email,
+        username,
+      }
+
+      state.currentUser = obj
+
+      console.log('obj')
+      console.log(obj)
     }
   },
   namespaced: true

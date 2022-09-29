@@ -7,7 +7,7 @@
     />
   </div>
   <h2 v-else style="color: red">
-    Список пользователей пуст
+    Users list is empty
   </h2>
 </template>
 
@@ -21,10 +21,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  mounted() {
-    console.log('mounted this.todos')
-    console.log(this.todos)
   }
 }
 </script>

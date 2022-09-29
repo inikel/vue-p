@@ -1,18 +1,18 @@
 <template>
   <div class="user-item">
     <div>
-      <div><strong>Пользователь:</strong> {{ userData.name }}</div>
+      <div><strong>User:</strong> {{ userData.name }}</div>
     </div>
     <div class="user-item__btns">
       <MyButton
         @click="$emit('openTodos', userData)"
       >
-        Задачи
+        Todos
       </MyButton>
       <MyButton
         @click="$emit('openEditForm', userData)"
       >
-        Данные пользователя
+        User data
       </MyButton>
     </div>
   </div>

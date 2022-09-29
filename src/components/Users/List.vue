@@ -54,9 +54,10 @@ export default {
     },
     showEditForm(userData) {
      this.isEditFormOpen = true
+     this.$store.commit('usersModule/fillCurrentUser', userData)
     },
     ...mapMutations({
-      setCurrentUserTodosAndId: 'todosModule/setCurrentUserTodosAndId'
+      setCurrentUserTodosAndId: 'todosModule/setCurrentUserTodosAndId',
     })
   },
   computed: {

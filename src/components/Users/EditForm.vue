@@ -3,32 +3,36 @@
     <label>
       <p>Username</p>
       <input 
-        :model-value="userName"
+        v-model="username"
       />
     </label>
     <label>
       <p>Name</p>
       <input 
-        :model-value="name"
+        v-model="name"
       />
     </label>
     <label>
       <p>Email</p>
       <input 
-        :model-value="email"
+        v-model="email"
       />
     </label>
     <div class="btns">
-      <MyButton> Сохранить </MyButton>
-      <MyButton> Редактировать </MyButton>
+      <MyButton> Save </MyButton>
+      <MyButton> Edit </MyButton>
     </div>
   </form>
 </template>
 
 <script>
-import MyButton from '../UI/MyButton.vue';
 import { mapState } from 'vuex';
   export default {
+    data() {
+      return {
+        isEditMode: false
+      }
+    },
     props: {
         userData: {
             type: Object,
@@ -37,12 +41,17 @@ import { mapState } from 'vuex';
     },
     computed: {
       ...mapState({
-        userName: state => state.usersModule.currentUser.userName,
+        // userName: state => state.usersModule.currentUser.userName,
         name: state => state.usersModule.currentUser.name,
         email: state => state.usersModule.currentUser.email,
+        username: state => state.usersModule.currentUser.username,
       })
     },
-    components: { MyButton }
+    methods: {
+      toggleEditMode() {
+        this.isEditMode = !this.isEditMode
+      }
+    },
 }
 </script>
 
