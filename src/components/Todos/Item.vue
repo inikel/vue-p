@@ -3,10 +3,10 @@
     class="todo-item"
     @click="handleToggleTodo" 
   >
-    <div><strong>Задача:</strong> {{ data.name }}</div>
+    <div><strong>Задача {{ data.id }}:</strong> {{ data.name }}</div>
     <input 
       type="checkbox" 
-      :checked="data.done" 
+      :checked="data.done"
     />
   </div>
 </template>

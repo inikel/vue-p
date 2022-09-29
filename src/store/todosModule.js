@@ -43,13 +43,14 @@ export const todosModule = {
     },
     setCurrentUserTodosAndId(state, id) {
       state.currentTodos.todosUserId = id
-      const { todos } = state.allTodos.find(i => i.userId == id)
+      const todosObj = state.allTodos.find(i => i.userId == id)
+
+      if (!todosObj) return
+      const { todos } = todosObj
       state.currentTodos.todos = todos
     },
     toggleTodo(state, todoId) {
       const currentTodo = state.currentTodos.todos.find(i => i.id == todoId)
-      console.log('state.currentTodos, todoId: ' + todoId)
-      console.log(state.currentTodos)
       currentTodo.done = !currentTodo.done
 
       let { todos: currentUserTodos } = state.allTodos.find(i => i.userId == state.currentTodos.todosUserId)

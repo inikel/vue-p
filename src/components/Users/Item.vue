@@ -9,6 +9,11 @@
       >
         Задачи
       </MyButton>
+      <MyButton
+        @click="$emit('openEditForm', userData)"
+      >
+        Данные пользователя
+      </MyButton>
     </div>
   </div>
 </template>
@@ -33,8 +38,13 @@
   .user-item {
     padding: 15px;
     border: 2px solid teal;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+  }
+  button {
+    margin-left: 5px;
   }
 </style>

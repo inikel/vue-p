@@ -1,6 +1,12 @@
 
 export const usersModule = {
   state: () => ({
+    currentUser: {
+      id: null,
+      name: null,
+      email: null,
+      username: null
+    },
     users: [
       {
         "id": 1,
