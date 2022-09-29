@@ -27,11 +27,6 @@
         type: Object,
         required: true
       },
-    },
-    computed: {
-      userTodos() {
-
-      }
     }
   }
 </script>

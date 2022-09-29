@@ -2,7 +2,7 @@
   <div class="navbar">
     <div @click="$router.push('/')">Vue & Vuex playground </div>
     <div class="navbar__btns">
-      <my-button @click="$router.push('/users')">Users</my-button>
+      <my-button @click="$router.push('/')">Users</my-button>
       <my-button style="margin-left: 20px" @click="$router.push('/payments')">Payments</my-button>
     </div>
   </div>

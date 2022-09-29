@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <NavBar />
-    <UsersPage />
-  </div>
+  <NavBar />
+  <RouterView>
+  </RouterView>
 </template>
 
 <script>
