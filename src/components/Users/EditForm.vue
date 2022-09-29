@@ -1,58 +1,85 @@
 <template>
-  <form>
+  <form @submit.prevent>
     <label>
       <p>Username</p>
       <input 
-        v-model="username"
+        :value="username"
+        @input="onInputUpdate"
+        name="username"
+        :disabled="!isEditMode"
+        ref="usernameRef"
       />
     </label>
     <label>
       <p>Name</p>
       <input 
-        v-model="name"
+        :value="name"
+        @input="onInputUpdate"
+        name="name"
+        :disabled="!isEditMode"
       />
     </label>
     <label>
       <p>Email</p>
-      <input 
-        v-model="email"
+      <input
+        name="email"
+        @input="onInputUpdate"
+        :value="email"
+        :disabled="!isEditMode"
       />
     </label>
     <div class="btns">
-      <MyButton> Save </MyButton>
-      <MyButton> Edit </MyButton>
+      <MyButton @click="saveData"> Save </MyButton>
+      <MyButton @click="activateEditMode"> Edit </MyButton>
     </div>
   </form>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
   export default {
     data() {
       return {
-        isEditMode: false
+        isEditMode: false,
       }
     },
     props: {
-        userData: {
-            type: Object,
-            required: true
-        }
+      userData: {
+        type: Object,
+        required: true
+      }
     },
     computed: {
       ...mapState({
-        // userName: state => state.usersModule.currentUser.userName,
         name: state => state.usersModule.currentUser.name,
         email: state => state.usersModule.currentUser.email,
         username: state => state.usersModule.currentUser.username,
       })
     },
     methods: {
-      toggleEditMode() {
-        this.isEditMode = !this.isEditMode
-      }
-    },
-}
+      activateEditMode() {
+        setTimeout(() => this.makeFocus(this.$refs.usernameRef), 0)
+        this.isEditMode = true
+      },
+      saveData() {
+        this.isEditMode = false
+        this.saveUserData()
+      },
+      makeFocus(node) {
+        node.focus()
+      },
+      onInputUpdate(e) {
+        this.updateInputInStore({
+          newValue: e.target.value,
+          fieldName: e.target.name
+        })
+      },
+      ...mapMutations({
+        updateInputInStore: 'usersModule/updateSingleCurrentUserField',
+        saveUserData: 'usersModule/saveUserData'
+      }),
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +93,7 @@ p {
   margin-bottom: 5px;
 }
 input {
-  padding: 5px 10px;
+  padding: 10px 15px;
   border: 1px solid darkgray;
   border-radius: 4px;
   width: 100%;

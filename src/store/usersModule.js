@@ -2,6 +2,7 @@
 export const usersModule = {
   state: () => ({
     currentUser: {
+      id: null,
       name: null,
       email: null,
       username: null
@@ -38,24 +39,27 @@ export const usersModule = {
       state.users = users
     },
     fillCurrentUser(state, userData) {
-      const { name, email, username } = userData
+      const { name, email, username, id } = userData
 
-      console.log('userData in fillCurUser')
-      console.log(userData)
-
-      console.log('state.currentUser')
-      console.log(state.currentUser)
-
-      const obj = {
+      state.currentUser = {
+        id,
         name,
         email,
         username,
-      }
-
-      state.currentUser = obj
-
-      console.log('obj')
-      console.log(obj)
+      } 
+    },
+    updateSingleCurrentUserField(state, {
+      fieldName,
+      newValue
+    }) {
+      state.currentUser[fieldName] = newValue
+    },
+    saveUserData(state) {
+      const usersWithoutCurrentUser = state.users.filter(i => i.id !== state.currentUser.id)
+      state.users = [
+        ...usersWithoutCurrentUser,
+        state.currentUser
+      ].sort((a,b) => a.id - b.id)
     }
   },
   namespaced: true

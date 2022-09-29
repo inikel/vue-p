@@ -1,4 +1,5 @@
 <template>
+  <h3>Todo list: </h3>
   <div v-if="todos.length > 0">
     <TodoItem
       v-for="todo in todos"
@@ -26,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+h3 {
+  margin-bottom: 15px;
+}
 </style>
