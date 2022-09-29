@@ -1,7 +1,7 @@
 <template>
   <div 
     class="todo-item"
-    @click="() => toggleTodo(this.todoId)" 
+    @click="handleToggleTodo" 
   >
     <div><strong>Задача:</strong> {{ data.name }}</div>
     <input 
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-  import { mapActions, mapMutations } from 'vuex'
+  import { mapMutations } from 'vuex'
   export default {
     data() {
       return {
-        isChecked: this.data.done
+        isChecked: this.data.done,
       }
     },
     props: {
@@ -25,17 +25,14 @@
         required: true
       }
     },
-    computed: {
-      todoId: '123'
-    },
     methods: {
       ...mapMutations({
         toggleTodo: 'todosModule/toggleTodo'
-      })
+      }),
+      handleToggleTodo() {
+        this.toggleTodo(this.data.id)
+      }
     },
-    mounted() {
-      console.log(this.todoId)
-    }
   }
 </script>
 

@@ -52,16 +52,9 @@ export const todosModule = {
       console.log(state.currentTodos)
       currentTodo.done = !currentTodo.done
 
-      const { todos: currentUserTodos } = state.allTodos.find(i => i.userId == state.currentTodos.id)
-      currentUserTodos = currentTodos.todos
+      let { todos: currentUserTodos } = state.allTodos.find(i => i.userId == state.currentTodos.todosUserId)
+      currentUserTodos = currentTodo.todos
     }
   },
-  // getters: {
-  //   singleUserTodos(state) {
-  //     const currentUserObj = state.allTodos.filter(i => i.userId == state.currentUserId)[0]
-
-  //     return currentUserObj.todos
-  //   }
-  // },
   namespaced: true
 }
